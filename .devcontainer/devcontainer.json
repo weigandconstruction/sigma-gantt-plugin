@@ -1,0 +1,9 @@
+{
+  "name": "Node MCP DevContainer",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/workspaces/sigma-gantt-plugin",
+  "remoteUser": "vscode"
+}
