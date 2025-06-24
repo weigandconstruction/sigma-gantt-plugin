@@ -1,9 +1,28 @@
 {
-  "name": "Node MCP DevContainer",
-  "dockerComposeFile": [
-    "docker-compose.yml"
-  ],
-  "service": "app",
-  "workspaceFolder": "/workspaces/sigma-gantt-plugin",
-  "remoteUser": "vscode"
+  "name": "Sigma Plugin Development",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-json"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "typescript.preferences.importModuleSpecifier": "relative"
+      }
+    }
+  },
+  "postCreateCommand": "npm install && openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes -subj '/CN=localhost'",
+  "remoteUser": "node",
+  "mounts": [
+    "source=${localWorkspaceFolder}/.env,target=/workspaces/${localWorkspaceFolderBaseName}/.env,type=bind,consistency=cached"
+  ]
 }
