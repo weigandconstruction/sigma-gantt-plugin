@@ -39,12 +39,12 @@ This repository contains a Sigma Computing plugin designed to display interactiv
   - ✅ Build a configuration panel for users to map Sigma columns to Gantt fields.
   - ✅ Allow customization of chart appearance (colors, labels, etc.).
 
-- [ ] **5. Testing & Validation**
+- [x] **5. Testing & Validation**
 
-  - Create comprehensive test suite for data transformation logic.
-  - Test the plugin with sample Sigma datasets.
-  - Validate compatibility with Sigma plugin API and ensure robust error handling.
-  - Add better error handling and user feedback for edge cases.
+  - ✅ Create comprehensive test suite for data transformation logic.
+  - ✅ Test the plugin with sample Sigma datasets.
+  - ✅ Validate compatibility with Sigma plugin API and ensure robust error handling.
+  - ✅ Add better error handling and user feedback for edge cases.
 
 - [ ] **6. Documentation & Deployment**
   - Document usage, configuration, and troubleshooting steps.
@@ -66,11 +66,14 @@ To update or develop this plugin:
 3. **Build for production:**
    ```sh
    npm run build
-   cp -r build/* .
    ```
-   The build output will be placed in the `build/` directory. Copy its contents to the root for GitHub Pages hosting.
-4. **Deploy:**
-   Commit and push changes to the repository. GitHub Pages will serve the files from the root.
+   The build output will be placed in the `dist/` directory.
+4. **Run tests:**
+   ```sh
+   npm test          # Interactive test mode
+   npm run test:run  # Single test run
+   npm run coverage  # Test coverage report
+   ```
 
 ## References
 

@@ -7,6 +7,11 @@ import {
   useElementColumns,
   useElementData,
 } from "@sigmacomputing/plugin";
+import {
+  validateSigmaData,
+  sanitizeGanttTask,
+  convertTimestampToDateString,
+} from "./utils/dataValidation";
 import "./App.css";
 
 // Fallback sample tasks for development/testing
@@ -83,6 +88,26 @@ function App() {
       return sampleTasks; // Return sample tasks if no data is available
     }
 
+    // Validate the Sigma data configuration
+    const validation = validateSigmaData(sigmaData, config);
+
+    if (!validation.isValid) {
+      console.error(
+        "[Sigma Plugin] Data validation failed:",
+        validation.errors
+      );
+      validation.warnings.forEach((warning) =>
+        console.warn("[Sigma Plugin]", warning)
+      );
+      return sampleTasks; // Fall back to sample data
+    }
+
+    if (validation.warnings.length > 0) {
+      validation.warnings.forEach((warning) =>
+        console.warn("[Sigma Plugin]", warning)
+      );
+    }
+
     // Get column data arrays
     const taskNameData = sigmaData[config.taskNameColumn] || [];
     const startDateData = sigmaData[config.startDateColumn] || [];
@@ -102,18 +127,17 @@ function App() {
     // Transform column-based data into row-based tasks
     const tasks: GanttTask[] = [];
     for (let i = 0; i < rowCount; i++) {
-      const task: GanttTask = {
+      const rawTask = {
         id: `task-${i}`,
-        name: taskNameData[i] || "Unnamed Task",
-        start: startDateData[i]
-          ? new Date(startDateData[i]).toISOString().split("T")[0] // Convert timestamp to YYYY-MM-DD
-          : new Date().toISOString().split("T")[0],
-        end: endDateData[i]
-          ? new Date(endDateData[i]).toISOString().split("T")[0] // Convert timestamp to YYYY-MM-DD
-          : new Date().toISOString().split("T")[0],
-        progress: progressData[i] || 0,
-        dependencies: dependenciesData[i] || "",
+        name: taskNameData[i],
+        start: convertTimestampToDateString(startDateData[i]),
+        end: convertTimestampToDateString(endDateData[i]),
+        progress: progressData[i],
+        dependencies: dependenciesData[i],
       };
+
+      // Sanitize and validate each task
+      const task = sanitizeGanttTask(rawTask, i);
       tasks.push(task);
     }
 
