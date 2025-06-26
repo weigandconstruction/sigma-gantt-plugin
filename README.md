@@ -49,6 +49,8 @@ This repository contains a Sigma Computing plugin designed to display interactiv
 - [x] **6. Documentation & Deployment**
   - ✅ Set up GitHub Actions CI/CD pipeline with automated testing.
   - ✅ Configure branch protection to require passing tests before merging to main.
+  - ✅ Install and configure test coverage reporting with @vitest/coverage-v8.
+  - ✅ Set up ESLint to ignore generated files (coverage, dist).
   - [ ] Document usage, configuration, and troubleshooting steps.
   - [ ] Package and publish the plugin for use in Sigma environments.
 
