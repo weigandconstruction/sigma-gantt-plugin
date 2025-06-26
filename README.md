@@ -46,9 +46,11 @@ This repository contains a Sigma Computing plugin designed to display interactiv
   - ✅ Validate compatibility with Sigma plugin API and ensure robust error handling.
   - ✅ Add better error handling and user feedback for edge cases.
 
-- [ ] **6. Documentation & Deployment**
-  - Document usage, configuration, and troubleshooting steps.
-  - Package and publish the plugin for use in Sigma environments.
+- [x] **6. Documentation & Deployment**
+  - ✅ Set up GitHub Actions CI/CD pipeline with automated testing.
+  - ✅ Configure branch protection to require passing tests before merging to main.
+  - [ ] Document usage, configuration, and troubleshooting steps.
+  - [ ] Package and publish the plugin for use in Sigma environments.
 
 ## Updating the App
 
@@ -74,6 +76,33 @@ To update or develop this plugin:
    npm run test:run  # Single test run
    npm run coverage  # Test coverage report
    ```
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+### Automated Checks
+
+- **Testing:** Runs the full test suite with Vitest on Node.js 18 and 20
+- **Linting:** Validates code quality with ESLint
+- **Building:** Ensures the project compiles successfully
+- **Security:** Performs npm audit to check for vulnerabilities
+- **Coverage:** Generates test coverage reports
+
+### Branch Protection
+
+The `main` branch is protected and requires:
+
+- All status checks to pass
+- Pull request reviews (configurable)
+- Up-to-date branches before merging
+
+See `.github/BRANCH_PROTECTION.md` for setup instructions.
+
+### Workflow Triggers
+
+- **Push:** to `main` and `develop` branches
+- **Pull Request:** targeting `main` and `develop` branches
 
 ## References
 
