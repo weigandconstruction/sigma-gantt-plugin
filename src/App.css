@@ -1,8 +1,26 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Hide internal Frappe Gantt scrollbars to prevent double scrollbars */
+.gantt-container {
+  overflow: visible !important;
+}
+
+.gantt .gantt-header,
+.gantt .gantt-body {
+  overflow: visible !important;
+}
+
+/* Ensure the gantt chart uses full available space */
+.gantt {
+  width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 .logo {
