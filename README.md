@@ -27,22 +27,24 @@ This repository contains a Sigma Computing plugin designed to display interactiv
   - ✅ Set up CSS styling (copied locally due to module resolution issues).
   - ✅ Created TypeScript interfaces for Gantt tasks in `types.ts`.
 
-- [ ] **3. Data Mapping & Sigma Integration**
+- [x] **3. Data Mapping & Sigma Integration**
 
   - ✅ Define the expected data schema from Sigma (task name, start, end, dependencies, etc.).
-  - Integrate Sigma Plugin SDK to receive data from Sigma dashboards.
-  - Implement logic to transform Sigma data into the format required by Frappe Gantt.
-  - Add error handling for invalid or missing data.
+  - ✅ Integrate Sigma Plugin SDK to receive data from Sigma dashboards.
+  - ✅ Implement logic to transform Sigma data into the format required by Frappe Gantt.
+  - ✅ Add error handling for invalid or missing data.
 
-- [ ] **4. Plugin UI & Configuration**
+- [x] **4. Plugin UI & Configuration**
 
-  - Build a configuration panel for users to map Sigma columns to Gantt fields.
-  - Allow customization of chart appearance (colors, labels, etc.).
+  - ✅ Build a configuration panel for users to map Sigma columns to Gantt fields.
+  - ✅ Allow customization of chart appearance (colors, labels, etc.).
 
 - [ ] **5. Testing & Validation**
 
+  - Create comprehensive test suite for data transformation logic.
   - Test the plugin with sample Sigma datasets.
   - Validate compatibility with Sigma plugin API and ensure robust error handling.
+  - Add better error handling and user feedback for edge cases.
 
 - [ ] **6. Documentation & Deployment**
   - Document usage, configuration, and troubleshooting steps.
