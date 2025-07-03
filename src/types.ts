@@ -5,6 +5,9 @@ export interface GanttTask {
   end: string;
   progress?: number;
   dependencies?: string;
+  projectName?: string;
+  projectNumber?: string;
+  scheduleDescription?: string;
 }
 
 export interface GanttOptions {
@@ -48,6 +51,17 @@ export interface GanttOptions {
   // Popup configuration
   popup_on?: "click" | "hover";
   custom_popup_html?: null | ((task: GanttTask) => string);
+  popup?: (popupData: {
+    task: GanttTask;
+    chart: object;
+    get_title: () => HTMLElement;
+    get_subtitle: () => HTMLElement;
+    get_details: () => HTMLElement;
+    set_title: (html: string) => void;
+    set_subtitle: (html: string) => void;
+    set_details: (html: string) => void;
+    add_action: (html: string, func: () => void) => void;
+  }) => string | undefined | false;
 
   // Arrows and dependencies
   arrow_curve?: number;

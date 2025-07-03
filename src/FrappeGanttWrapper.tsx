@@ -23,7 +23,7 @@ const FrappeGanttWrapper: React.FC<FrappeGanttWrapperProps> = ({
       }
 
       // Default options merged with user options
-      const defaultOptions: GanttOptions = {
+      const defaultOptions = {
         view_mode: "Month",
         custom_popup_html: null,
       };
@@ -37,7 +37,7 @@ const FrappeGanttWrapper: React.FC<FrappeGanttWrapperProps> = ({
       ganttInstance.current = new Gantt(
         ganttRef.current,
         safeTasks,
-        mergedOptions
+        mergedOptions as object
       );
     }
   }, [tasks, options]);

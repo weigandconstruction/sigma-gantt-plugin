@@ -78,6 +78,14 @@ export function sanitizeGanttTask(
     progress: isValidProgress(task.progress) ? task.progress! : 0,
     dependencies:
       typeof task.dependencies === "string" ? task.dependencies : "",
+    projectName:
+      typeof task.projectName === "string" ? task.projectName : undefined,
+    projectNumber:
+      typeof task.projectNumber === "string" ? task.projectNumber : undefined,
+    scheduleDescription:
+      typeof task.scheduleDescription === "string"
+        ? task.scheduleDescription
+        : undefined,
   };
 }
 
